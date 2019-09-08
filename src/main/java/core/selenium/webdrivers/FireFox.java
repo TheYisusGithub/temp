@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class FireFox implements Browser {
-    public WebDriver getBrowser() {
+    public WebDriver getDriver() {
         WebDriverManager.firefoxdriver().setup();
         return new FirefoxDriver();
     }

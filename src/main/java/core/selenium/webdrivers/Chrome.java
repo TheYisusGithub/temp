@@ -13,7 +13,7 @@ public class Chrome implements Browser{
      *
      * @return the ChromeDriver.
      */
-    public WebDriver getBrowser() {
+    public WebDriver getDriver() {
         WebDriverManager.chromedriver().setup();
         return new ChromeDriver();
     }

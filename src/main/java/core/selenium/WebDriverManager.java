@@ -1,7 +1,7 @@
 package core.selenium;
 
-import core.selenium.webdrivers.Chrome;
-import core.selenium.webdrivers.FireFox;
+import core.selenium.webdrivers.BrowserFactory;
+import core.selenium.webdrivers.BrowserType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,11 +20,9 @@ public class WebDriverManager {
 
     private WebDriverManager() {
 
-        if (WebDriverConfig.getInstance().getWebBrowser().equals("FireFox")) {
-            driver = new FireFox().getBrowser();
-        } else {
-            driver = new Chrome().getBrowser();
-        }
+        String webBrowser = WebDriverConfig.getInstance().getWebBrowser().toUpperCase();
+        BrowserType browserType = BrowserType.valueOf(webBrowser);
+        driver= BrowserFactory.getBrowser(browserType).getDriver();
         timeOutInSeconds=Integer.parseInt(WebDriverConfig.getInstance().getExplicit());
         wait = new WebDriverWait(driver, timeOutInSeconds);
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(WebDriverConfig.getInstance().getImplicit()), TimeUnit.SECONDS) ;

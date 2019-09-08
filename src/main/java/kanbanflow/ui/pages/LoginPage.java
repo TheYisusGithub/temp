@@ -1,20 +1,18 @@
 package kanbanflow.ui.pages;
 
-import org.openqa.selenium.WebDriver;
+import kanbanflow.ui.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class Login {
+public class LoginPage extends BasePage {
     @FindBy(id = "email")
-    WebElement inputEmail;
+    private WebElement inputEmail;
     @FindBy(id = "password")
-    WebElement inputPassword;
+    private WebElement inputPassword;
     @FindBy(className = "form-actionButton")
-    WebElement submitButton;
+    private WebElement submitButton;
 
-    public Login(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+    public LoginPage() {
     }
 
     public void signIn(String email, String password) {
